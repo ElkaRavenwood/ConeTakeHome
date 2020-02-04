@@ -35,19 +35,16 @@ public class COne {
 			System.exit(0);
 		}
 
-		String canonPath = new File(".").getCanonicalPath();
-		System.out.println(canonPath+fName);
-
 		// finds type of file
 		String type = fName.substring(fName.indexOf(".")+1);
 		System.out.println(type);
 		
 		try {
-			File file = new File(canonPath+fName);
+			File file = new File(fName);
 			// creates scanner
 	  	Scanner fileReader = new Scanner (file);
 
-			if (type.equals("java")) analyzeJava(fileReader);
+			if (type.equals("java")||type.equals("c")) analyzeJava(fileReader);
 			if (type.equals("py")) anyalyzePy(fileReader);
 			
 			throw new FileNotFoundException();
